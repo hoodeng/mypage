@@ -1,26 +1,29 @@
  <template>
-  <div style="">
+  <div>
     <head-top title="我的随笔"></head-top>
-    <el-table
-      class="list-table"
-      :data="tableData"
-      :show-header="false"
-      @row-click="rowClickHandler"
-    >
-      <el-table-column prop="title" label="标题" style="width: 100%"></el-table-column>
-    </el-table>
 
-    <div class="list-footer">
-      <el-pagination
-        class="page"
-        background
-        layout="prev, pager, next"
-        :total="pageCount"
-        @current-change="pager"
-        @next-click="next"
-        @prev-click="prev"
-      ></el-pagination>
-      <a class="record" href="http://www.miitbeian.gov.cn">粤ICP备18063336号</a>
+    <div class="list-main">
+      <el-table
+        class="list-table"
+        :data="tableData"
+        :show-header="false"
+        @row-click="rowClickHandler"
+      >
+        <el-table-column prop="title" label="标题" style="width: 100%"></el-table-column>
+      </el-table>
+
+      <div class="list-footer">
+        <el-pagination
+          class="page"
+          background
+          layout="prev, pager, next"
+          :total="pageCount"
+          @current-change="pager"
+          @next-click="next"
+          @prev-click="prev"
+        ></el-pagination>
+        <a class="record" href="http://www.miitbeian.gov.cn">粤ICP备18063336号</a>
+      </div>
     </div>
   </div>
 </template>
@@ -34,102 +37,102 @@ export default {
   data() {
     return {
       tableData: [
-      //   {
-      //     date: "2016-05-02",
-      //     title: "故都的秋"
-      //   },
-      //   {
-      //     date: "2016-05-04",
-      //     title: "背景"
-      //   },
-      //   {
-      //     date: "2016-05-01",
-      //     title: "苦柚子"
-      //   },
-      //   {
-      //     date: "2016-05-03",
-      //     title: "乡愁"
-      //   },
-      //   {
-      //     date: "2016-05-02",
-      //     title: "故都的秋"
-      //   },
-      //   {
-      //     date: "2016-05-04",
-      //     title: "背景"
-      //   },
-      //   {
-      //     date: "2016-05-01",
-      //     title: "苦柚子"
-      //   },
-      //   {
-      //     date: "2016-05-03",
-      //     title: "乡愁"
-      //   },
-      //   {
-      //     date: "2016-05-02",
-      //     title: "故都的秋"
-      //   },
-      //   {
-      //     date: "2016-05-04",
-      //     title: "背景"
-      //   },
-      //   {
-      //     date: "2016-05-01",
-      //     title: "苦柚子"
-      //   },
-      //   {
-      //     date: "2016-05-03",
-      //     title: "乡愁"
-      //   },
-      //   {
-      //     date: "2016-05-02",
-      //     title: "故都的秋"
-      //   },
-      //   {
-      //     date: "2016-05-04",
-      //     title: "背景"
-      //   },
-      //   {
-      //     date: "2016-05-01",
-      //     title: "苦柚子"
-      //   },
-      //   {
-      //     date: "2016-05-03",
-      //     title: "乡愁"
-      //   },
-      //   {
-      //     date: "2016-05-02",
-      //     title: "故都的秋"
-      //   },
-      //   {
-      //     date: "2016-05-04",
-      //     title: "背景"
-      //   },
-      //   {
-      //     date: "2016-05-01",
-      //     title: "苦柚子"
-      //   },
-      //   {
-      //     date: "2016-05-03",
-      //     title: "乡愁"
-      //   },
-      //   {
-      //     date: "2016-05-02",
-      //     title: "故都的秋"
-      //   },
-      //   {
-      //     date: "2016-05-04",
-      //     title: "背景"
-      //   },
-      //   {
-      //     date: "2016-05-01",
-      //     title: "苦柚子"
-      //   },
-      //   {
-      //     date: "2016-05-03",
-      //     title: "乡愁"
-      //   }
+        //   {
+        //     date: "2016-05-02",
+        //     title: "故都的秋"
+        //   },
+        //   {
+        //     date: "2016-05-04",
+        //     title: "背景"
+        //   },
+        //   {
+        //     date: "2016-05-01",
+        //     title: "苦柚子"
+        //   },
+        //   {
+        //     date: "2016-05-03",
+        //     title: "乡愁"
+        //   },
+        //   {
+        //     date: "2016-05-02",
+        //     title: "故都的秋"
+        //   },
+        //   {
+        //     date: "2016-05-04",
+        //     title: "背景"
+        //   },
+        //   {
+        //     date: "2016-05-01",
+        //     title: "苦柚子"
+        //   },
+        //   {
+        //     date: "2016-05-03",
+        //     title: "乡愁"
+        //   },
+        //   {
+        //     date: "2016-05-02",
+        //     title: "故都的秋"
+        //   },
+        //   {
+        //     date: "2016-05-04",
+        //     title: "背景"
+        //   },
+        //   {
+        //     date: "2016-05-01",
+        //     title: "苦柚子"
+        //   },
+        //   {
+        //     date: "2016-05-03",
+        //     title: "乡愁"
+        //   },
+        //   {
+        //     date: "2016-05-02",
+        //     title: "故都的秋"
+        //   },
+        //   {
+        //     date: "2016-05-04",
+        //     title: "背景"
+        //   },
+        //   {
+        //     date: "2016-05-01",
+        //     title: "苦柚子"
+        //   },
+        //   {
+        //     date: "2016-05-03",
+        //     title: "乡愁"
+        //   },
+        //   {
+        //     date: "2016-05-02",
+        //     title: "故都的秋"
+        //   },
+        //   {
+        //     date: "2016-05-04",
+        //     title: "背景"
+        //   },
+        //   {
+        //     date: "2016-05-01",
+        //     title: "苦柚子"
+        //   },
+        //   {
+        //     date: "2016-05-03",
+        //     title: "乡愁"
+        //   },
+        //   {
+        //     date: "2016-05-02",
+        //     title: "故都的秋"
+        //   },
+        //   {
+        //     date: "2016-05-04",
+        //     title: "背景"
+        //   },
+        //   {
+        //     date: "2016-05-01",
+        //     title: "苦柚子"
+        //   },
+        //   {
+        //     date: "2016-05-03",
+        //     title: "乡愁"
+        //   }
       ],
       pageCount: 0,
       currentPage: 1
@@ -200,6 +203,7 @@ export default {
 </script>
 
 <style lang="less">
+@import "../../style/mixin";
 
 .list-header {
   position: absolute;
@@ -209,6 +213,10 @@ export default {
   width: 100%;
   z-index: 0;
   overflow: hidden;
+}
+
+.list-main {
+  margin-top: @headertopheight;
 }
 
 .list-table {

@@ -16,7 +16,7 @@
         >关于</div>
       </el-aside>
 
-      <el-main class="app-body">
+      <el-main class="app-body" style="padding:0px;">
         <template>
           <router-view/>
         </template>
@@ -171,7 +171,7 @@ body {
       display: flex;
     }
     &-user {
-      font-size: 8px;
+      font-size: 14px;
       color: $textColor1;
       justify-content: center;
       display: flex;
@@ -181,7 +181,7 @@ body {
       // height: 30px;
       width: 100%;
       color: $textColor1;
-      font-size: 14px;
+      font-size: 16px;
       display: flex;
       flex-flow: row;
       justify-content: center;

@@ -1,15 +1,17 @@
 <template>
   <div>
     <head-top :title="blog.title"></head-top>
-    <div class="blog-content">{{blog.content}}</div>
-    <div class="blog-footer">
-      <el-button-group class="button-group">
-        <el-button type="primary" icon="el-icon-arrow-left" @click="prev">上一篇</el-button>
-        <el-button type="primary" @click="next">
-          下一篇
-          <i class="el-icon-arrow-right el-icon--right"></i>
-        </el-button>
-      </el-button-group>
+    <div class="blog-main">
+      <div class="blog-content">{{blog.content}}</div>
+      <div class="blog-footer">
+        <el-button-group class="button-group">
+          <el-button type="primary" icon="el-icon-arrow-left" @click="prev">上一篇</el-button>
+          <el-button type="primary" @click="next">
+            下一篇
+            <i class="el-icon-arrow-right el-icon--right"></i>
+          </el-button>
+        </el-button-group>
+      </div>
     </div>
   </div>
 </template>
@@ -25,7 +27,7 @@ export default {
     return {
       id: "",
       title: "",
-      content:"",
+      content: "",
       blog: {}
     };
   },
@@ -99,11 +101,9 @@ export default {
     }
   },
 
-  updated() {
-  },
+  updated() {},
 
-  beforeDestroy(){
-  },
+  beforeDestroy() {},
 
   components: {
     headTop
@@ -113,6 +113,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
+@import "../../style/mixin";
 
 .blog-header {
   position: absolute;
@@ -122,6 +123,10 @@ export default {
   width: 100%;
   z-index: 0;
   overflow: hidden;
+}
+
+.blog-main{
+  padding-top: @headertopheight;
 }
 
 .blog-content {
