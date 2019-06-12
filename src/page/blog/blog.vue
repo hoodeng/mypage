@@ -61,22 +61,6 @@ export default {
     },
     next() {
       let that = this;
-      // request.getNextBlogId(
-      //   {
-      //     id: this.id
-      //   },
-      //   data => {
-      //     let obj = JSON.parse(data);
-      //     if (obj && obj.code == "200") {
-      //       let _id = obj.data.id;
-      //       if (_id && parseInt(_id) > 0) {
-      //         that.$router.push({ path: "blog", query: { id: _id } });
-      //       }
-      //     }
-      //   },
-      //   data => {}
-      // );
-
       request.getNextBlog(
         {
           id: this.id
