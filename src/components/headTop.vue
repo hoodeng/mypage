@@ -2,7 +2,7 @@
   <div class="header-top-pos">
     <div class="header_container">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item class="header-top-text" style="color:#611616">{{title}}</el-breadcrumb-item>
+        <el-breadcrumb-item class="header-top-text" style="color:#333">{{title}}</el-breadcrumb-item>
         <!-- <el-breadcrumb-item v-for="(item, index) in $router.name" :key="index">{{item}}</el-breadcrumb-item> -->
       </el-breadcrumb>
 

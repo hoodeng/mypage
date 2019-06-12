@@ -9,7 +9,8 @@
         :show-header="false"
         @row-click="rowClickHandler"
       >
-        <el-table-column prop="title" label="标题" style="width: 100%"></el-table-column>
+        <el-table-column prop="title" label="标题"></el-table-column>
+        <el-table-column prop="createTime" label="日期" align="right" :formatter="formatter"></el-table-column>
       </el-table>
 
       <div class="list-footer">
@@ -194,6 +195,16 @@ export default {
     next(o) {
       //to do
       console.info("next");
+    },
+    split(createTime) {
+      console.log("split ------>  ");
+      console.log(createTime);
+      return String(createTime).split(" ")[0];
+    },
+    formatter(row, column) {
+      let format = String(row.createTime).split(" ")[0];
+      console.log(format);
+      return format;
     }
   },
   components: {
@@ -221,7 +232,8 @@ export default {
 
 .list-table {
   width: 100%;
-  padding-left: 20px;
+  // padding-left: 20px;
+  margin-right: 200px;
   margin-bottom: 100px;
 }
 

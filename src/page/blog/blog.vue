@@ -2,6 +2,7 @@
   <div>
     <head-top :title="blog.title"></head-top>
     <div class="blog-main">
+      <div class="blog-time">时间：{{formater(blog.createTime)}}</div>
       <div class="blog-content">{{blog.content}}</div>
       <div class="blog-footer">
         <el-button-group class="button-group">
@@ -41,12 +42,13 @@ export default {
   methods: {
     prev() {
       let that = this;
-      request.getPrevBlogId(
+      request.getPrevBlog(
         {
           id: this.id
         },
         data => {
           let obj = JSON.parse(data);
+          this.blog = obj.data;
           if (obj && obj.code == "200") {
             let _id = obj.data.id;
             if (_id && _id > 0) {
@@ -59,12 +61,29 @@ export default {
     },
     next() {
       let that = this;
-      request.getNextBlogId(
+      // request.getNextBlogId(
+      //   {
+      //     id: this.id
+      //   },
+      //   data => {
+      //     let obj = JSON.parse(data);
+      //     if (obj && obj.code == "200") {
+      //       let _id = obj.data.id;
+      //       if (_id && parseInt(_id) > 0) {
+      //         that.$router.push({ path: "blog", query: { id: _id } });
+      //       }
+      //     }
+      //   },
+      //   data => {}
+      // );
+
+      request.getNextBlog(
         {
           id: this.id
         },
         data => {
           let obj = JSON.parse(data);
+          this.blog = obj.data;
           if (obj && obj.code == "200") {
             let _id = obj.data.id;
             if (_id && parseInt(_id) > 0) {
@@ -91,6 +110,11 @@ export default {
         },
         data => {}
       );
+    },
+    formater(createTime) {
+      let format = String(createTime).split(" ")[0];
+      console.log(format);
+      return format;
     }
   },
 
@@ -125,13 +149,19 @@ export default {
   overflow: hidden;
 }
 
-.blog-main{
+.blog-main {
   padding-top: @headertopheight;
+}
+
+.blog-time{
+  margin: 20px;
+  font-size: 12px;
+  color: #999;
 }
 
 .blog-content {
   text-align: left;
-  color: #999;
+  color: #333;
   font-size: 14px;
   min-height: 200px;
   margin: 20px;
