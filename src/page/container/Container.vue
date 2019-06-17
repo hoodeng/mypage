@@ -2,7 +2,7 @@
   <div class="app">
     <el-container>
       <el-aside class="app-side app-side-left" :class="'app-side-expanded'">
-        <img class="app-side-avator" src="@/assets/avator.jpg">
+        <img class="app-side-avator" @click="login" src="@/assets/avator.jpg">
 
         <label class="app-side-user">藤藤</label>
 
@@ -10,6 +10,10 @@
           v-bind:class="selectBlog? 'app-side-item blog selected' : 'app-side-item  blog'"
           @click="blog"
         >我的随笔</div>
+        <div
+          v-bind:class="selectAdd? 'app-side-item add selected' : 'app-side-item  add'"
+          @click="add"
+        >写日志</div>
         <div
           v-bind:class="selectAbout? 'app-side-item about selected' : 'app-side-item about'"
           @click="about"
@@ -19,6 +23,31 @@
       <el-main class="app-body" style="padding:0px;">
         <template>
           <router-view/>
+          <div>
+            <el-dialog
+              title="登录"
+              :visible.sync="dialogFormVisible"
+              center
+              :append-to-body="true"
+              :lock-scroll="false"
+              width="40%"
+            >
+              <el-form>
+                <el-form-item label="账号" prop="num">
+                  <el-input v-model="ruleForm2.num"></el-input>
+                </el-form-item>
+                <el-form-item label="密码" prop="pass">
+                  <el-input type="password" v-model="ruleForm2.pass" auto-complete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="记住密码" prop="delivery">
+                  <el-switch v-model="ruleForm2.delivery"></el-switch>
+                </el-form-item>
+              </el-form>
+              <div slot="footer" class="dialog-footer">
+                <el-button type="primary" @click="submitForm()">登 录</el-button>
+              </div>
+            </el-dialog>
+          </div>
         </template>
       </el-main>
       <!-- </el-container> -->
@@ -27,8 +56,10 @@
 </template>
 
 <script>
+import { request } from "@/common/request";
 const SIDE_BLOG_ITEM = 0x01;
 const SIZE_ABOUT_ITEM = 0x02;
+const SIZE_ADD_ITEM = 0x04;
 export default {
   name: "Container",
   data() {
@@ -37,7 +68,13 @@ export default {
       username: "",
       isCollapse: false,
       headerTitle: "",
-      select: SIDE_BLOG_ITEM
+      select: SIDE_BLOG_ITEM,
+      dialogFormVisible: true,
+      ruleForm2: {
+        pass: "",
+        num: "",
+        delivery: false
+      }
     };
   },
   created() {
@@ -80,6 +117,29 @@ export default {
       this.$router.push({ path: "about" });
       this.headerTitle = "关于";
       this.select = SIZE_ABOUT_ITEM;
+    },
+    add(v) {
+      console.info("add ---->");
+      this.$router.push({ path: "add" });
+      this.headerTitle = "写日志";
+      this.select = SIZE_ADD_ITEM;
+    },
+    login(v) {
+      console.info("login------>");
+      this.dialogFormVisible = true;
+      this.apply();
+    },
+    submitForm(v) {
+      console.info(this.ruleForm2);
+      request.login(
+        { username: this.ruleForm2.num, password: this.ruleForm2.pass },
+        data => {
+          let obj = JSON.parse(data);
+          console.info(obj);
+          this.pageCount = (parseInt(obj.data.count) / 20) * 10;
+        },
+        data => {}
+      );
     }
   },
   mounted: function() {
@@ -101,6 +161,9 @@ export default {
     },
     selectAbout: function() {
       return this.select & SIZE_ABOUT_ITEM;
+    },
+    selectAdd: function() {
+      return this.select & SIZE_ADD_ITEM;
     }
   }
 };
@@ -199,8 +262,11 @@ body {
     .blog {
       margin-top: 16px;
     }
+    .add {
+      margin-top: 12px;
+    }
     .about {
-      margin-top: 6px;
+      margin-top: 12px;
     }
 
     .selected {

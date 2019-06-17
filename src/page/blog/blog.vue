@@ -3,7 +3,7 @@
     <head-top :title="blog.title"></head-top>
     <div class="blog-main">
       <div class="blog-time">时间：{{formater(blog.createTime)}}</div>
-      <div class="blog-content">{{blog.content}}</div>
+      <div class="blog-content" style="white-space:pre-wrap">{{blog.content}}</div>
       <div class="blog-footer">
         <el-button-group class="button-group">
           <el-button type="primary" icon="el-icon-arrow-left" @click="prev">上一篇</el-button>

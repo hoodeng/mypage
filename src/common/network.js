@@ -32,10 +32,10 @@ const network = {
       type: options.type || 'json',
       asyn: options.asyn || true,
       timeout: options.timeout || '',
-      onSuccess: options.onSuccess || function () {},
-      onError: options.onError || function () {},
-      onComplete: options.onComplete || function () {},
-      onTimeout: options.onTimeout || function () {},
+      onSuccess: options.onSuccess || function () { },
+      onError: options.onError || function () { },
+      onComplete: options.onComplete || function () { },
+      onTimeout: options.onTimeout || function () { },
       data: options.data || {}
     };
 
@@ -48,7 +48,7 @@ const network = {
         requestDone = true;
         options.onTimeout();
       }, timeout * 1000);
-    } catch (e) {}
+    } catch (e) { }
 
     var xhr = this.createXHR();
     xhr.onreadystatechange = function () {
@@ -63,14 +63,22 @@ const network = {
       }
     };
 
-    if (options.method.toLowerCase() === 'post') {
-      xhr.open(options.method, options.url, options.aysn);
-      xhr.send(this.serialize(options.data));
-    } else {
-      options.url = this.addURLParameters(options.url, this.serialize(options.data));
-      xhr.open(options.method, options.url, options.aysn);
-      xhr.send(null);
-    }
+    // if (options.method.toLowerCase() === 'post') {
+    //   console.log("method post");
+    //   xhr.open(options.method, options.url, options.aysn);
+    //   xhr.send(this.serialize(options.data));
+    // } else {
+    //   console.log("method get");
+    //   options.url = this.addURLParameters(options.url, this.serialize(options.data));
+    //   xhr.open(options.method, options.url, options.aysn);
+    //   xhr.send(null);
+    // }
+
+
+    console.log("method " + options.method);
+    options.url = this.addURLParameters(options.url, this.serialize(options.data));
+    xhr.open(options.method, options.url, options.aysn);
+    xhr.send(null);
 
   },
 

@@ -12,7 +12,6 @@
         <el-table-column prop="title" label="标题"></el-table-column>
         <el-table-column prop="createTime" label="日期" align="right" :formatter="formatter"></el-table-column>
       </el-table>
-
       <div class="list-footer">
         <el-pagination
           class="page"
@@ -136,7 +135,8 @@ export default {
         //   }
       ],
       pageCount: 0,
-      currentPage: 1
+      currentPage: 1,
+      dialogFormVisible: true
     };
   },
   created() {

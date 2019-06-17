@@ -53,6 +53,14 @@ const request = {
     let url = baseUrl + '/blog/nextid'
     network.get(url, data, success, fail);
   },
+  login: function (data, success, fail) {
+    let url = baseUrl + '/login'
+    network.post(url, data, success, fail);
+  },
+  insert: function (data, success, fail) {
+    let url = baseUrl + '/blog/insert'
+    network.post(url, data, success, fail);
+  }
 }
 
 export {
